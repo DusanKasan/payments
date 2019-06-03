@@ -1,0 +1,207 @@
+{
+  "consumer": {
+    "name": "Consumer"
+  },
+  "provider": {
+    "name": "Provider"
+  },
+  "interactions": [
+    {
+      "description": "a request to create a payment",
+      "providerState": "system is empty",
+      "request": {
+        "method": "POST",
+        "path": "/payments",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "type": "Payment",
+          "id": "4ee3a8d8-ca7b-4290-a52c-dd5b6165ec45",
+          "version": 0,
+          "organisation_id": "4ee3a8d8-ca7b-4290-a52c-dd5b6165ec45",
+          "attributes": {
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "attributes": {
+          },
+          "id": "string",
+          "organisation_id": "string",
+          "type": "string",
+          "version": 1
+        },
+        "matchingRules": {
+          "$.body.id": {
+            "match": "type"
+          },
+          "$.body.organisation_id": {
+            "match": "type"
+          },
+          "$.body.type": {
+            "match": "type"
+          },
+          "$.body.version": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a request to fetch all payments",
+      "providerState": "payment exists",
+      "request": {
+        "method": "GET",
+        "path": "/payments"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "meta": {
+            "more": true
+          },
+          "payments": [
+            {
+              "attributes": {
+              },
+              "id": "string",
+              "organisation_id": "string",
+              "type": "string",
+              "version": 1
+            }
+          ]
+        },
+        "matchingRules": {
+          "$.body.meta.more": {
+            "match": "type"
+          },
+          "$.body.payments": {
+            "min": 1
+          },
+          "$.body.payments[*].*": {
+            "match": "type"
+          },
+          "$.body.payments[*].id": {
+            "match": "type"
+          },
+          "$.body.payments[*].organisation_id": {
+            "match": "type"
+          },
+          "$.body.payments[*].type": {
+            "match": "type"
+          },
+          "$.body.payments[*].version": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a request to update a payment",
+      "providerState": "payment exists",
+      "request": {
+        "method": "PUT",
+        "path": "/payments/4ee3a8d8-ca7b-4290-a52c-dd5b6165ec45",
+        "body": {
+          "type": "Payment",
+          "id": "",
+          "version": 0,
+          "organisation_id": "4ee3a8d8-ca7b-4290-a52c-dd5b6165ec46",
+          "attributes": {
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "attributes": {
+          },
+          "id": "string",
+          "organisation_id": "string",
+          "type": "string",
+          "version": 1
+        },
+        "matchingRules": {
+          "$.body.id": {
+            "match": "type"
+          },
+          "$.body.organisation_id": {
+            "match": "type"
+          },
+          "$.body.type": {
+            "match": "type"
+          },
+          "$.body.version": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a request to fetch a payment",
+      "providerState": "payment exists",
+      "request": {
+        "method": "GET",
+        "path": "/payments/4ee3a8d8-ca7b-4290-a52c-dd5b6165ec45"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "attributes": {
+          },
+          "id": "string",
+          "organisation_id": "string",
+          "type": "string",
+          "version": 1
+        },
+        "matchingRules": {
+          "$.body.id": {
+            "match": "type"
+          },
+          "$.body.organisation_id": {
+            "match": "type"
+          },
+          "$.body.type": {
+            "match": "type"
+          },
+          "$.body.version": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a request to delete a payment",
+      "providerState": "payment exists",
+      "request": {
+        "method": "DELETE",
+        "path": "/payments/4ee3a8d8-ca7b-4290-a52c-dd5b6165ec45"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  postgresql:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: payments
+    volumes:
+      - "../database:/docker-entrypoint-initdb.d"
+  payments:
+    build:
+      context: ..
+      dockerfile: deployments/Dockerfile
+    ports:
+      - 8080:80
+    links:
+      - postgresql
+    command: payments -dsn="postgres://user:password@postgresql:5432/payments?sslmode=disable"
